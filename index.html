@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+    <title>Scales Thesaurus</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fretboard.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="themes.css">
+    <script src="theme-init.js"></script>
+    <!-- Add JSZip library for ZIP file creation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <!-- removed static sidebar sections content (moved to app-ui-sidebar.js) -->
+        </aside>
+        
+        <main class="main-content">
+            <header class="top-header">
+                <div class="top-header-content">
+                    <!-- Reset button removed from absolute position; moved into header content -->
+                    <h1 class="main-title" style="margin-right: 15px;">Scales Thesaurus</h1>
+                    <button id="reset-settings" title="Reset all settings" aria-label="Reset settings"
+                            style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#000;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,0.2);margin-right:auto;">
+                        ⟳
+                    </button>
+                    <nav class="header-nav">
+                        <a href="home.html" class="header-link">Home</a>
+                        <a href="scales.html" class="header-link">Scales</a>
+                        <a href="chords.html" class="header-link">Chords</a>
+                        <a href="intervals.html" class="header-link">Intervals</a>
+                        <a href="data.html" class="header-link">Data</a>
+                        <a href="lessons.html" class="header-link">Lessons</a>
+                        <a href="about.html" class="header-link">About</a>
+                    </nav>
+                    <div class="sidebar-toggle-container" style="display:flex; gap:8px; align-items:center;">
+                        <button id="sidebar-toggle" aria-expanded="false">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="sr-only">Toggle Sidebar</span>
+                        </button>
+                        <button id="toggle-bottom" title="Show / Hide bottom controls" aria-label="Toggle bottom controls" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.2);padding:6px 8px;border-radius:6px;cursor:pointer;font-weight:600;">
+                            👁
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="fretboard-container">
+                <div id="fretboard"></div>
+                <!-- Current pattern display -->
+                <div id="current-pattern-display" style="display:block;padding:5px 14px 10px;text-align:center;font-size:1.1em;font-weight:700;color:var(--primary-color);background:transparent;">
+                    <!-- populated by App.updateFretboard() -->
+                </div>
+            </div>
+            
+            <div class="slideshow-container">
+                <div id="slideshow-items"></div>
+            </div>
+            
+            <div class="pattern-generator">
+                <div id="generated-patterns"></div>
+            </div>
+            
+
+
+            <!-- removed footers controls-bottom and export-footer -> injected by app-ui-bottom.js -->
+        </main>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/docx@7.3.0/build/index.js"></script>
+    <script src="themes-data.js"></script>
+    <script src="themes-data-wood.js"></script>
+    <script src="themes-data-exotic.js"></script>
+    <script src="themes-data-mono.js"></script>
+    <script src="themes-data-retro.js"></script>
+    <script src="music-theory-data.js"></script>
+    <script src="scales-data-standard.js"></script>
+    <script src="scales-data-numeric.js"></script>
+    <script src="scales-data-advanced-1.js"></script>
+    <script src="scales-data-advanced-2.js"></script>
+    <script src="scales-data-advanced-3.js"></script>
+    <script src="scales-data-advanced-4.js"></script>
+    <script src="scales-data-advanced-5.js"></script>
+    <script src="scales-data-advanced-6.js"></script>
+    <script src="music-theory.js"></script>
+    <script src="music-theory-logic.js"></script>
+    <script src="music-theory-chords.js"></script>
+    <script src="music-theory-descriptions.js"></script>
+    <script src="fretboard-styles.js"></script>
+    <script src="fretboard-styles-extended.js"></script>
+    <script src="fretboard-marker.js"></script>
+    <script src="fretboard-effects.js"></script>
+    <script src="instrument-presets.js"></script>
+    <script src="themes-data-extra.js"></script>
+    <script src="themes-data-colors.js"></script>
+    <script src="themes-data-nature.js"></script>
+    <script src="themes-data-misc.js"></script>
+    <script src="themes-data-extended.js"></script>
+    <script src="exporter.js"></script>
+    <script src="exporter-scales.js"></script>
+    <script src="exporter-chords.js"></script>
+    <script src="exporter-intervals.js"></script>
+    <script src="exporter-gamuts.js"></script>
+    <script src="exporter-bulk.js"></script>
+    <script src="exporter-word-v1.js"></script>
+    <script src="exporter-word-v2.js"></script>
+    <script src="exporter-word-v3.js"></script>
+    <script src="exporter-word-v4.js"></script>
+    <script src="exporter-word-v5.js"></script>
+    <script src="exporter-word-v6.js"></script>
+    <script src="exporter-word-custom.js"></script>
+    <script src="exporter-word-patterns.js"></script>
+    <script src="exporter-word-chords-cof.js"></script>
+    <script src="exporter-info-pages.js"></script>
+    <script src="exporter-cof.js"></script>
+    <script src="fretboard.js"></script>
+    <script src="fretboard-draw.js"></script>
+    <script src="fretboard-draw-grid.js"></script>
+    <script src="fretboard-draw-notes.js"></script>
+    <script src="fretboard-menu.js"></script>
+    <script src="fretboard-menu-multi.js"></script>
+    <script src="piano.js"></script>
+    <!-- removed inline theme handler script -> moved to theme-init.js -->
+    <script src="diagnostics-tests.js"></script>
+    <script src="diagnostics-tests-ui.js"></script>
+    <script src="diagnostics-tests-logic.js"></script>
+    <script src="diagnostics.js"></script>
+    <!-- Core App Engine and Extensions -->
+    <script src="app.js"></script>
+    <script src="app-events-main.js"></script>
+    <script src="app-events-core.js"></script>
+    <script src="app-events-playback.js"></script>
+    <script src="app-events-export-basic.js"></script>
+    <script src="app-events-export-batch.js"></script>
+    <script src="app-events-export-custom.js"></script>
+    <script src="app-events-export.js"></script>
+    <script src="app-state.js"></script>
+    <script src="app-lessons-data.js"></script>
+    <script src="app-ui-layout.js"></script>
+    <script src="app-playback.js"></script>
+    <script src="app-playback-cof.js"></script>
+    <script src="app-settings.js"></script>
+    <script src="app-media.js"></script>
+    <script src="app-ui.js"></script>
+    <script src="app-ui-bottom-controls.js"></script>
+    <script src="app-ui-bottom-instrument.js"></script>
+    <script src="app-ui-bottom-appearance.js"></script>
+    <script src="app-ui-bottom-export.js"></script>
+    <script src="app-ui-bottom.js"></script>
+    <script src="app-ui-appearance.js"></script>
+    <script src="app-instrument.js"></script>
+    <script src="app-instrument-ui.js"></script>
+    <script src="app-instrument-tuning.js"></script>
+    <script src="app-instrument-fretspan.js"></script>
+    <script src="app-theory-info.js"></script>
+    <script src="app-theory-renderers.js"></script>
+    <script src="app-theory-panel.js"></script>
+    <script src="app-theory-lessons.js"></script>
+    <script src="app-export.js"></script>
+    <script src="app-ui-pattern-pill.js"></script>
+    <script src="app-ui-pattern-selectors.js"></script>
+    <script src="app-ui-pattern-actions.js"></script>
+    <script src="pattern-generator.js"></script>
+    <script src="pattern-generator-export.js"></script>
+    <script src="slideshow.js"></script>
+    <script src="slideshow-player.js"></script>
+    <script src="slideshow-cycle.js"></script>
+    <script src="slideshow-csv.js"></script>
+    <script src="melodic-patterns-data.js"></script>
+    <script src="melodic-patterns.js"></script>
+    <script src="melodic-patterns-ui.js"></script>
+    <script src="melodic-patterns-player.js"></script>
+
+    <!-- UI Component Builders (These create elements App needs) -->
+    <script src="app-ui-sidebar.js"></script>
+    
+    <!-- Application Initialization -->
+    <script src="app-init.js"></script>
+</body>
+</html>

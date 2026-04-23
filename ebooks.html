@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scales Thesaurus - eBooks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
+    <script src="theme-init.js"></script>
+    <style>
+        .ebooks-container {
+            padding: 20px;
+            max-width: 1100px;
+            margin: 20px auto;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ebooks-container h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .ebook-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust card size */
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .ebook-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .ebook-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .ebook-cover {
+            height: 250px; /* Taller cover area */
+            background-color: var(--secondary-color); /* Placeholder background */
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            position: relative; /* For potential overlays */
+        }
+        /* Placeholder book icon */
+         .ebook-cover::before {
+             content: '📖';
+             font-size: 3em;
+             margin-bottom: 10px;
+             opacity: 0.8;
+         }
+         /* Placeholder book title style */
+         .ebook-cover span {
+             background: rgba(0,0,0,0.3);
+             padding: 5px 10px;
+             border-radius: 4px;
+             margin-top: 10px; /* Space below icon */
+         }
+
+        .ebook-details {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ebook-details h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        .ebook-details p {
+            margin: 0 0 15px 0;
+            font-size: 0.9em;
+            color: var(--text-color);
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .ebook-actions {
+            margin-top: auto; /* Push buttons to the bottom */
+            display: flex;
+            gap: 10px;
+        }
+
+        .ebook-button {
+            padding: 8px 12px;
+            font-size: 0.9em;
+            color: var(--button-text);
+            background-color: var(--accent-color);
+            flex-grow: 1; /* Make buttons fill space */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+         .ebook-button.preview {
+             background-color: var(--secondary-color);
+         }
+
+        .ebook-button:hover {
+            opacity: 0.9;
+        }
+         .ebook-button:disabled {
+             background-color: var(--input-border);
+             color: var(--text-color);
+             cursor: not-allowed;
+             opacity: 0.6;
+         }
+
+        .return-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .return-button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <div class="top-header-content">
+            
+            <div class="header-nav">
+                <a href="home.html" class="header-link">Home</a>
+                <a href="scales.html" class="header-link">Scales</a>
+                <a href="chords.html" class="header-link">Chords</a>
+                <a href="intervals.html" class="header-link">Intervals</a>
+                <a href="ebooks.html" class="header-link">eBooks</a>
+                <a href="progress.html" class="header-link">Progress</a>
+                <a href="favorites.html" class="header-link">Favorites</a>
+                <a href="data.html" class="header-link">Data</a>
+                <a href="about.html" class="header-link">About</a>
+            </div>
+            <div class="sidebar-toggle-container">
+                <button id="sidebar-toggle" aria-expanded="false" onclick="window.location.href='index.html'">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="sr-only">Go to App</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ebooks-container">
+        <h1>Music Theory eBooks</h1>
+        <p style="text-align: center; margin-bottom: 30px; font-style: italic;">
+            Explore our library of digital books designed to complement the interactive tools. Dive deeper into scales, chords, harmony, and application. (eBooks coming soon!)
+        </p>
+
+        <div class="ebook-list" id="ebook-list">
+            <!-- Example eBook Item 1: Scales Encyclopedia -->
+            <div class="ebook-item">
+                <div class="ebook-cover"><span>The Complete Scale Guide</span></div>
+                <div class="ebook-details">
+                    <h3>The Complete Scale Guide</h3>
+                    <p>An exhaustive reference covering hundreds of scales from major and minor modes to exotic and synthetic scales. Includes formulas, diagrams, usage examples, and related chords for each.</p>
+                    <div class="ebook-actions">
+                        <!-- Removed Preview Button -->
+                        <!-- Change Get eBook button to a link styled as a button -->
+                        <a href="home.html" class="ebook-button">View eBook</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example eBook Item 2: Chord Construction -->
+            <div class="ebook-item">
+                <div class="ebook-cover"><span>Chord Construction Masterclass</span></div>
+                <div class="ebook-details">
+                    <h3>Chord Construction Masterclass</h3>
+                    <p>Learn how chords are built from the ground up. Covers triads, 7th chords, extensions, alterations, inversions, and voicings across different instruments.</p>
+                     <div class="ebook-actions">
+                        <!-- Removed Preview Button -->
+                         <!-- Change Get eBook button to a link styled as a button -->
+                        <a href="home.html" class="ebook-button">View eBook</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example eBook Item 3: Fretboard Visualization -->
+            <div class="ebook-item">
+                <div class="ebook-cover"><span>Visualizing the Fretboard</span></div>
+                <div class="ebook-details">
+                    <h3>Visualizing the Fretboard</h3>
+                    <p>Techniques and exercises to map out scales, chords, and arpeggios across the entire guitar or bass fretboard, improving improvisation and sight-reading.</p>
+                    <div class="ebook-actions">
+                        <!-- Removed Preview Button -->
+                         <!-- Change Get eBook button to a link styled as a button -->
+                        <a href="home.html" class="ebook-button">View eBook</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example eBook Item 4: Harmony & Progression -->
+            <div class="ebook-item">
+                <div class="ebook-cover"><span>Harmony and Chord Progressions</span></div>
+                <div class="ebook-details">
+                    <h3>Harmony and Chord Progressions</h3>
+                    <p>Understand diatonic harmony, functional harmony, common chord progressions (like ii-V-I), and techniques for creating your own compelling progressions.</p>
+                     <div class="ebook-actions">
+                        <!-- Removed Preview Button -->
+                         <!-- Change Get eBook button to a link styled as a button -->
+                        <a href="home.html" class="ebook-button">View eBook</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Example eBook Item 5: Interval Training -->
+            <div class="ebook-item">
+                 <div class="ebook-cover"><span>Interval Recognition & Application</span></div>
+                <div class="ebook-details">
+                    <h3>Interval Recognition & Application</h3>
+                    <p>Train your ear to recognize intervals and understand their melodic and harmonic functions in music. Includes practical application exercises.</p>
+                     <div class="ebook-actions">
+                        <!-- Removed Preview Button -->
+                         <!-- Change Get eBook button to a link styled as a button -->
+                        <a href="home.html" class="ebook-button">View eBook</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example eBook Item 6: Using the Thesaurus -->
+             <div class="ebook-item">
+                 <div class="ebook-cover"><span>Maximizing the Scales Thesaurus</span></div>
+                 <div class="ebook-details">
+                     <h3>Maximizing the Scales Thesaurus</h3>
+                     <p>A user guide and best practices manual for getting the most out of the interactive Scales Thesaurus application, covering all features and settings.</p>
+                     <div class="ebook-actions">
+                         <!-- Removed Preview Button -->
+                          <!-- Change Get eBook button to a link styled as a button -->
+                        <a href="home.html" class="ebook-button">View eBook</a>
+                     </div>
+                 </div>
+             </div>
+
+            <!-- Add more placeholder eBooks as needed -->
+
+        </div>
+
+         <div style="text-align: center; margin-top: 40px;">
+             <a href="index.html" class="return-button">Explore the Interactive Fretboard</a>
+         </div>
+    </div>
+
+    <!-- Optional: Add script later if eBooks become dynamic -->
+    <!-- <script src="ebooks.js"></script> -->
+</body>
+</html>

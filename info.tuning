@@ -1,0 +1,12 @@
+// Do not change visibility of the theory info panel when exporting;
+    // export should not force the info panel to unhide.
+    this.fretboard.exportImage(customFilename);
+};
+
+App.prototype.exportCurrentDiagram = function() {
+    const customFilename = this.customFilename ? this.parseFilename(this.customFilename).replace('.jpg.jpg', '.jpg') : this.parseFilename();
+    
+    // Do not change visibility of the theory info panel when exporting;
+    // export should not force the info panel to unhide.
+    this.fretboard.exportImage(customFilename);
+};

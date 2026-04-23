@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scales Thesaurus - Home</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="themes.css">
+    <script src="theme-init.js"></script>
+    <style>
+        .home-container {
+            padding: 30px 20px;
+            max-width: 1100px; /* Wider for grid */
+            margin: 20px auto;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-container h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            font-size: 2.5em;
+        }
+
+        .home-intro {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+
+        .page-link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .page-link-card {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            background-color: var(--bg-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-link-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            color: var(--primary-color);
+        }
+
+        .page-link-card p {
+            margin: 0 0 15px 0; /* Space below description */
+            font-size: 0.95em;
+            color: var(--text-color);
+            line-height: 1.5;
+            flex-grow: 1; /* Allow description to take space */
+        }
+
+        .page-link-button {
+            display: inline-block;
+            padding: 12px 18px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            text-align: center;
+            margin-top: auto;
+            border-bottom: 3px solid rgba(0,0,0,0.2);
+        }
+
+        .page-link-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .page-link-button:active {
+            transform: translateY(0);
+            border-bottom-width: 1px;
+        }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <div class="top-header-content">
+            <h1 class="main-title" style="margin-right: 15px;">Scales Thesaurus</h1>
+            <div class="header-nav">
+                <a href="home.html" class="header-link">Home</a>
+                <a href="scales.html" class="header-link">Scales</a>
+                <a href="chords.html" class="header-link">Chords</a>
+                <a href="intervals.html" class="header-link">Intervals</a>
+                <a href="data.html" class="header-link">Data</a>
+                <a href="lessons.html" class="header-link">Lessons</a>
+                <a href="about.html" class="header-link">About</a>
+
+            </div>
+            <div class="sidebar-toggle-container">
+                <button id="sidebar-toggle" aria-expanded="false" title="Back to Interactive Fretboard" onclick="window.location.href='index.html'">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="sr-only">Go to App</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="home-container">
+        <h1>Welcome to the Scales Thesaurus</h1>
+        <p class="home-intro">
+            Your central hub for exploring interactive music theory tools and resources. Navigate through different sections using the links below.
+        </p>
+
+        <div class="page-link-grid">
+            <!-- Link to Main App -->
+            <div class="page-link-card">
+                <h2>Interactive Fretboard</h2>
+                <p>The core application. Visualize scales, chords, and intervals on a customizable fretboard. Play patterns, explore theory, and export diagrams.</p>
+                <a href="index.html" class="page-link-button">Go to App</a>
+            </div>
+
+            <!-- Link to Scales -->
+            <div class="page-link-card">
+                <h2>Scales Explorer</h2>
+                <p>Browse and filter through an extensive library of musical scales. View formulas, example spellings, and link directly to the interactive diagram.</p>
+                <a href="scales.html" class="page-link-button">Explore Scales</a>
+            </div>
+
+            <!-- Link to Chords -->
+            <div class="page-link-card">
+                <h2>Chords Explorer</h2>
+                <p>Discover various chord types, from basic triads to complex extended chords. Filter by intervals or related scales, and view diagrams.</p>
+                <a href="chords.html" class="page-link-button">Explore Chords</a>
+            </div>
+
+            <!-- Link to Intervals -->
+            <div class="page-link-card">
+                <h2>Intervals Explorer</h2>
+                <p>Learn about the building blocks of music. See all intervals, their semitone counts, and filter by chords or scales they belong to.</p>
+                <a href="intervals.html" class="page-link-button">Explore Intervals</a>
+            </div>
+
+            <!-- Link to Data -->
+            <div class="page-link-card">
+                <h2>Application Data</h2>
+                <p>View and manage the underlying data for intervals, chords, and scales used within the application. Export data tables.</p>
+                <a href="data.html" class="page-link-button">View Data</a>
+            </div>
+
+            <!-- Link to About -->
+            <div class="page-link-card">
+                <h2>About</h2>
+                <p>Learn more about the Scales Thesaurus project, its vision, features, and the team behind it.</p>
+                <a href="about.html" class="page-link-button">Read About</a>
+            </div>
+
+            <!-- Link to Lessons -->
+            <div class="page-link-card">
+                <h2>Music Lessons</h2>
+                <p>Step-by-step musical tutorials. Browse dozens of lessons covering intervals, scales, and chord construction directly on the fretboard.</p>
+                <a href="lessons.html" class="page-link-button">View Lessons</a>
+            </div>
+
+            
+
+            <!-- Link to Practice -->
+            <div class="page-link-card">
+                <h2>Practice Room</h2>
+                <p>Develop your skills with interactive exercises, metronome-based drills, and guided ear training routines.</p>
+                <a href="practice.html" class="page-link-button">Start Practicing</a>
+            </div>
+
+            <!-- Link to Favorites -->
+            <div class="page-link-card">
+                <h2>Your Favorites</h2>
+                <p>Quick access to your collection of saved scales, chords, and diagrams for focused study and review sessions.</p>
+                <a href="favorites.html" class="page-link-button">Open Favorites</a>
+            </div>
+
+            
+
+            <!-- Link to Progress -->
+            <div class="page-link-card">
+                <h2>Learning Progress</h2>
+                <p>Track your completed lessons, quiz scores, and practice time to visualize your musical growth journey.</p>
+                <a href="progress.html" class="page-link-button">Track Progress</a>
+            </div>
+
+            <!-- Link to Settings -->
+            <div class="page-link-card">
+                <h2>Settings</h2>
+                <p>Customize application defaults, visual themes, and audio preferences for a personalized experience.</p>
+                <a href="settings.html" class="page-link-button">Adjust Settings</a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+const invertBtn = document.createElement('button');
+    invertBtn.textContent = 'Invert Colors';
+    invertBtn.style.marginTop = '10px';
+    invertBtn.addEventListener('click', () => {
+        const inputs = customColors.querySelectorAll('input[type="color"]');
+        inputs.forEach(input => {
+            const hex = input.value.replace('#', '');
+            const inverted = (0xFFFFFF ^ parseInt(hex, 16)).toString(16).padStart(6, '0');
+            input.value = '#' + inverted;
+        });
+        this.updateFretboard();
+    });
+    customColors.appendChild(invertBtn);
+};
