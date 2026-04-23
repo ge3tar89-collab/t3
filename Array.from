@@ -1,0 +1,13 @@
+// Wire up randomizer for the sidebar custom input if it exists
+setTimeout(() => {
+    const randBtn = document.getElementById('random-custom-pattern-btn');
+    const customInput = document.getElementById('custom-pattern');
+    if (randBtn && customInput) {
+        randBtn.addEventListener('click', () => {
+            const len = Math.floor(Math.random() * 5) + 3;
+            const seq = [];
+            for(let i=0; i<len; i++) seq.push(Math.floor(Math.random() * 8) + 1);
+            customInput.value = seq.join(' ');
+        });
+    }
+}, 500);

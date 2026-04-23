@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scales Thesaurus - Courses</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
+    <script src="theme-init.js"></script>
+    <style>
+        /* Styles for the courses page */
+        .courses-container {
+            padding: 20px;
+            max-width: 1100px;
+            margin: 20px auto;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .courses-container h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Slightly larger cards */
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .course-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px; /* More rounded corners */
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Ensure image corners are rounded */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            height: 180px;
+            background-color: var(--secondary-color); /* Placeholder background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+         /* Placeholder for actual image */
+         .course-image span {
+             background: rgba(0,0,0,0.2);
+             padding: 5px 10px;
+             border-radius: 4px;
+         }
+
+        .course-details {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .course-details h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+            color: var(--primary-color);
+        }
+
+        .course-details p {
+            margin: 0 0 15px 0; /* More space below description */
+            font-size: 0.95em;
+            color: var(--text-color);
+            line-height: 1.5;
+            /* Limit description lines */
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* Show max 4 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .course-meta span {
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .enroll-button {
+            padding: 10px 18px;
+            font-size: 1em;
+            color: var(--button-text);
+            background-color: var(--accent-color);
+            width: 100%; /* Full width button */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+            margin-top: auto; /* Push button to the bottom */
+            display: block; /* Ensure link takes full width */
+            text-decoration: none; /* Remove underline from link */
+        }
+
+        .enroll-button:hover {
+            background-color: var(--secondary-color);
+            opacity: 0.9;
+        }
+
+        .return-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .return-button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <div class="top-header-content">
+            
+            <div class="header-nav">
+                <a href="scales.html" class="header-link">Scales</a>
+                <a href="chords.html" class="header-link">Chords</a>
+                <a href="intervals.html" class="header-link">Intervals</a>
+                <a href="lessons.html" class="header-link">Lessons</a>
+                 <!-- Courses dropdown -->
+                 <div class="header-nav-item">
+                     <a href="courses.html" class="header-link">Courses</a>
+                     <div class="dropdown-content">
+                         <a href="coursesquizzes.html">Quizzes</a>
+                         <a href="coursestests.html">Tests</a>
+                         <a href="coursesexams.html">Exams</a>
+                         <a href="coursesideas.html">Ideas</a>
+                     </div>
+                 </div>
+                <a href="favorites.html" class="header-link">Favorites</a>
+                <a href="data.html" class="header-link">Data</a>
+                <a href="about.html" class="header-link">About</a>
+            </div>
+            <div class="sidebar-toggle-container">
+                <button id="sidebar-toggle" aria-expanded="false" onclick="window.location.href='index.html'">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="sr-only">Go to App</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="courses-container">
+        <h1>Music Theory & Instrument Courses</h1>
+        <p style="text-align: center; margin-bottom: 30px; font-style: italic;">
+            Deepen your musical understanding with our structured courses. From foundational theory to advanced techniques, find the right path for your learning journey. (Courses coming soon!)
+        </p>
+
+        <div class="course-list" id="course-list">
+            <!-- Example Course Item 1 -->
+            <div class="course-item">
+                <div class="course-image"><span>🎸</span></div>
+                <div class="course-details">
+                    <div>
+                        <h3>Foundations of Music Theory</h3>
+                        <p>Master the essentials: notes, intervals, scales, chords, and basic harmony. Perfect for beginners or those needing a refresher.</p>
+                    </div>
+                    <div>
+                         <div class="course-meta">
+                             <span>Beginner</span>
+                             <span>~10 Hours</span>
+                         </div>
+                        <a href="home.html" class="enroll-button">View Course</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Example Course Item 2 -->
+            <div class="course-item">
+                <div class="course-image"><span>🎼</span></div>
+                <div class="course-details">
+                    <div>
+                        <h3>Scale Mastery for Guitarists</h3>
+                         <p>Unlock the fretboard by learning major, minor, pentatonic, and modal scales across different positions and musical contexts.</p>
+                    </div>
+                     <div>
+                         <div class="course-meta">
+                             <span>Intermediate</span>
+                             <span>~15 Hours</span>
+                         </div>
+                         <a href="home.html" class="enroll-button">View Course</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Example Course Item 3 -->
+            <div class="course-item">
+                 <div class="course-image"><span>🎹</span></div>
+                <div class="course-details">
+                    <div>
+                        <h3>Chord Voicings & Progressions</h3>
+                        <p>Explore triads, 7th chords, extensions, inversions, and common chord progressions used in various genres.</p>
+                    </div>
+                     <div>
+                         <div class="course-meta">
+                             <span>Intermediate</span>
+                             <span>~12 Hours</span>
+                         </div>
+                         <a href="home.html" class="enroll-button">View Course</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Course Item 4 -->
+            <div class="course-item">
+                 <div class="course-image"><span>🎷</span></div>
+                <div class="course-details">
+                    <div>
+                        <h3>Introduction to Jazz Harmony</h3>
+                        <p>Dive into the world of jazz chords, scales like melodic minor and diminished, and fundamental improvisation concepts.</p>
+                    </div>
+                     <div>
+                         <div class="course-meta">
+                             <span>Advanced</span>
+                             <span>~20 Hours</span>
+                         </div>
+                         <a href="home.html" class="enroll-button">View Course</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Add more placeholder courses as needed -->
+
+        </div>
+
+         <div style="text-align: center; margin-top: 40px;">
+             <a href="index.html" class="return-button">Explore the Interactive Fretboard</a>
+         </div>
+    </div>
+
+    <!-- Optional: Add script later if courses become dynamic -->
+    <!-- <script src="courses.js"></script> -->
+</body>
+</html>
